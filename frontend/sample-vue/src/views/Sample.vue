@@ -5,7 +5,7 @@
       <li>{{ article.postName }}</li>
       <li>{{ article.postText }}</li> 
       <li>{{ article.postDate }}</li>
-      <li><img v-bind:src="article.postImage" height="30" /></li>
+      <li><img v-bind:src="'https://sample-vue-test-bucket.s3-ap-northeast-1.amazonaws.com/'+article.postImage" height="30" /></li>
     </ul>
     <a href="/sample/create">追加</a>
   </div>

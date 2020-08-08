@@ -35,6 +35,15 @@ public class Article {
     @Column(name = "is_published")
 	private boolean isPublished;
     
+    public Article() {
+    	
+    }
+    public Article(String name, String text, String image) {
+    	this.postName = name;
+    	this.postText = text;
+    	this.postImage = image;
+    	this.isPublished = true;
+    }
     
 	public Integer getId() {
 		return id;
