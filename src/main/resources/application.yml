@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:mysql://xxxx:3306/sample
+    username: xxx
+    password: xxxxx
+    driverClassName: com.mysql.cj.jdbc.Driver
+cloud:
+  aws:
+    credentials:
+      accessKey: xxxx 
+      secretKey: xxxxx
+    stack:
+      auto: false
+    region:
+      auto: false
+      static: xxxx
