@@ -1,0 +1,24 @@
+<template>
+  <div class="home">
+    <img alt="Vue logo" src="../assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  </div>
+</template>
+
+<script>
+// @ is an alias to /src
+import HelloWorld from '@/components/HelloWorld.vue'
+
+export default {
+  name: 'Home',
+  components: {
+    HelloWorld
+  },
+  created(){
+    this.$axios.get('http://ec2-18-181-145-245.ap-northeast-1.compute.amazonaws.com/api/hello')
+    .then((response) => {
+      console.log(response.data)
+    })
+  }
+}
+</script>
