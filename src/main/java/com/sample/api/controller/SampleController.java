@@ -27,6 +27,8 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.ListObjectsV2Result;
+import com.amazonaws.services.s3.model.CannedAccessControlList;
+import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.PutObjectResult;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 
@@ -47,10 +49,10 @@ public class SampleController {
 	@Value("${cloud.aws.region.static}")
 	String awsRegion;
 	
-	final String AWS_S3_BUCKET = "sample-vue-test-bucket";
+	final String AWS_S3_BUCKET = "sample-test-img-bucket";
 	
 	@Autowired
-	PostService postService;	
+	PostService postService;
 	
 	AmazonS3 getAmazonS3Client() {
 		return AmazonS3ClientBuilder
@@ -129,7 +131,7 @@ public class SampleController {
 			String fileName, File file
 			){
 		String hashFileName = DigestUtils.sha256Hex(fileName);
-		PutObjectResult result = getAmazonS3Client().putObject(AWS_S3_BUCKET, hashFileName, file);
+		PutObjectResult result = getAmazonS3Client().putObject(new PutObjectRequest(AWS_S3_BUCKET, hashFileName, file).withCannedAcl(CannedAccessControlList.PublicRead));
 		return hashFileName;
 	}
 
